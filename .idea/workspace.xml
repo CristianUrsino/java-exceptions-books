@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="653f4f46-ee5b-4b6d-b6bc-b5208d3bab58" name="Changes" comment="initial commit of bonus">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="653f4f46-ee5b-4b6d-b6bc-b5208d3bab58" name="Changes" comment="added playground function">
       <change beforePath="$PROJECT_DIR$/src/org/bonus/Tris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/bonus/Tris.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712156273942</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added playground function">
+      <option name="closed" value="true" />
+      <created>1712157765748</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712157765748</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,6 +138,7 @@
     <MESSAGE value="Updated handling excetions in Cart Main" />
     <MESSAGE value="fixed handling excetions in Cart Main" />
     <MESSAGE value="initial commit of bonus" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit of bonus" />
+    <MESSAGE value="added playground function" />
+    <option name="LAST_COMMIT_MESSAGE" value="added playground function" />
   </component>
 </project>

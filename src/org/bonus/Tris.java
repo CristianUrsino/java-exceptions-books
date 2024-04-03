@@ -12,6 +12,12 @@ public class Tris {
         boolean isOver = false;//se true indica che la partica è finita
         //stampo il campo di gioco prima di iniziare
         System.out.println(playground(moves));
+        //inizio il gioco
+        while(!isOver){
+            //ciclo finchè finisce il gioco
+            currentMove(moves,turn,scanner);
+            turn = !turn;
+        }
         //chiudo la risorsa scanner
         scanner.close();
     }
@@ -22,5 +28,16 @@ public class Tris {
                 "\n3 " + moves[2][0] + " " + moves[2][1] + " " + moves[2][2];
         return playground;
     }
-
+    public static void currentMove(char[][] moves, boolean turn,Scanner scanner){
+        //salvo la mossa del giocatore attuale
+        System.out.println("tocca al giocatore " + (turn ? "B" : "A") + ", inserisci la posizione: " );
+        String move = scanner.nextLine();
+        //estraggo gli indici
+        int row = Character.getNumericValue(move.charAt(0)) - 1;
+        int col = Character.getNumericValue(move.charAt(2)) - 1;
+        //aggiorno la matrice
+        moves[row][col] = turn ? 'B' : 'A';
+        //stampo il campo da gioco aggiornato
+        System.out.println(playground(moves));
+    }
 }
