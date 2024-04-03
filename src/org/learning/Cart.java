@@ -1,5 +1,8 @@
 package org.learning;
 //imports
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 public class Cart {
     public static void main(String[] args) {
@@ -71,6 +74,36 @@ public class Cart {
             //richiamo il costruttore
             books[i] = new Book(title,pagesNumber,author,publisher);
         }
+        //definisco il file
+        File cartFile = new File("./resouces/cart.txt");
+        if(cartFile.exists()){
+            //se esiste scrivo la lista dei libri inseriti nel carrello
+            try(FileWriter fileWriter = new FileWriter(cartFile)){
+                for(int i= 0; i < sizeCart; i++){
+                    fileWriter.write("\n\nBook number " + (i+1) +": " +
+                            "\n\ttitle: " + books[i].getTitle() +
+                            "\n\tnumeber of pages: " + books[i].getPagesNumber() +
+                            "\n\tauthor: " + books[i].getAuthor() +
+                            "\n\tpublisher: " + books[i].getPublisher());
+                }
+            }catch(IOException e){
+                //stampo errore
+                System.out.println("Unable to open file");
+            }
+            //poi leggo dal file i libri inseriti nel carrello
+            try(Scanner fileReader = new Scanner(cartFile)){
+                while (fileReader.hasNextLine()){
+                    System.out.println(fileReader.nextLine());
+                }
+            }catch(IOException e){
+                //stampo errore
+                System.out.println("Unable to open file");
+            }
+        }else{
+            //altrimenti stampo errore
+            System.out.println("File not found");
+        }
+
         //chiudo lo scanner
         scanner.close();
     }
