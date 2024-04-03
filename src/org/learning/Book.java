@@ -4,11 +4,11 @@ package org.learning;
 public class Book {
     //attributi
     private String title;
-    private int pageNumber;
+    private int pagesNumber;
     private String author;
     private String publisher;
     //costruttore
-    public Book(String title, int pageNumber, String author, String publisher) throws IllegalArgumentException {
+    public Book(String title, int pagesNumber, String author, String publisher) throws IllegalArgumentException {
         if(title.isEmpty()){
             throw new IllegalArgumentException("title is empty");
         }
@@ -18,11 +18,11 @@ public class Book {
         if(publisher.isEmpty()){
             throw new IllegalArgumentException("publisher is empty");
         }
-        if(pageNumber <= 0){
-            throw new IllegalArgumentException("pageNumber <= 0");
+        if(pagesNumber <= 0){
+            throw new IllegalArgumentException("pagesNumber <= 0");
         }
         this.title = title;
-        this.pageNumber = pageNumber;
+        this.pagesNumber = pagesNumber;
         this.author = author;
         this.publisher = publisher;
     }
@@ -33,21 +33,21 @@ public class Book {
         }
         this.title = title;
     }
-    public void setPageNumber(int pageNumber) throws IllegalArgumentException{
-        if(author.isEmpty()){
-            throw new IllegalArgumentException("author is empty");
+    public void setPagesNumber(int pagesNumber) throws IllegalArgumentException{
+        if(pagesNumber <= 0){
+            throw new IllegalArgumentException("pagesNumber <= 0");
         }
-        this.pageNumber = pageNumber;
+        this.pagesNumber = pagesNumber;
     }
     public void setAuthor(String author) throws IllegalArgumentException{
-        if(publisher.isEmpty()){
-            throw new IllegalArgumentException("publisher is empty");
+        if(author.isEmpty()){
+            throw new IllegalArgumentException("author is empty");
         }
         this.author = author;
     }
     public void setPublisher(String publisher) throws IllegalArgumentException{
-        if(pageNumber <= 0){
-            throw new IllegalArgumentException("pageNumber <= 0");
+        if(publisher.isEmpty()){
+            throw new IllegalArgumentException("publisher is empty");
         }
         this.publisher = publisher;
     }
@@ -55,8 +55,8 @@ public class Book {
     public String getTitle() {
         return title;
     }
-    public int getPageNumber() {
-        return pageNumber;
+    public int getPagesNumber() {
+        return pagesNumber;
     }
     public String getAuthor() {
         return author;
