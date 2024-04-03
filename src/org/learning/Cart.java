@@ -3,6 +3,7 @@ package org.learning;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.util.Scanner;
 public class Cart {
     public static void main(String[] args) {
@@ -33,46 +34,52 @@ public class Cart {
             String title="", author="", publisher = "";
             int pagesNumber = 0;
             //inizializzo tramite input i valori
-            do{
-                //ciclo finchè viene assegnato un valore valido di TITLE
-                System.out.print("enter a title: ");
-                title = scanner.nextLine();
-                if(title.isEmpty()){
-                    System.out.println("Error the title is empty, please try again");
-                }
-            }while(title.isEmpty());
-            do {
-                //ciclo finchè viene assegnato un valore valido di PAGESNUMBER
-                try{
-                    System.out.print("enter a number of pages: ");
-                    pagesNumber = Integer.parseInt(scanner.nextLine());
-                }catch (NumberFormatException e) {
-                    //setto valore per ripetere il ciclo
-                    pagesNumber = 0;
-                }
-                if(pagesNumber <= 0){
-                    //stampo il messaggio di errore
-                    System.out.println("Error: Please enter a valid positive integer value for the number of pages.");
-                }
-            }while(pagesNumber <= 0);
-            do{
-                //ciclo finchè viene assegnato un valore valido di AUTHOR
-                System.out.print("enter a author: ");
-                author = scanner.nextLine();
-                if(author.isEmpty()){
-                    System.out.println("Error the author is empty, please try again");
-                }
-            }while(author.isEmpty());
-            do{
-                //ciclo finchè viene assegnato un valore valido di PUBLISHER
-                System.out.print("enter a publisher: ");
-                publisher = scanner.nextLine();
-                if(publisher.isEmpty()){
-                    System.out.println("Error the publisher is empty, please try again");
-                }
-            }while(publisher.isEmpty());
-            //richiamo il costruttore
-            books[i] = new Book(title,pagesNumber,author,publisher);
+            try{
+                do{
+                    //ciclo finchè viene assegnato un valore valido di TITLE
+                    System.out.print("enter a title: ");
+                    title = scanner.nextLine();
+                    if(title.isEmpty()){
+                        System.out.println("Error the title is empty, please try again");
+                    }
+                }while(title.isEmpty());
+                do {
+                    //ciclo finchè viene assegnato un valore valido di PAGESNUMBER
+                    try{
+                        System.out.print("enter a number of pages: ");
+                        pagesNumber = Integer.parseInt(scanner.nextLine());
+                    }catch (NumberFormatException e) {
+                        //setto valore per ripetere il ciclo
+                        pagesNumber = 0;
+                    }
+                    if(pagesNumber <= 0){
+                        //stampo il messaggio di errore
+                        System.out.println("Error: Please enter a valid positive integer value for the number of pages.");
+                    }
+                }while(pagesNumber <= 0);
+                do{
+                    //ciclo finchè viene assegnato un valore valido di AUTHOR
+                    System.out.print("enter a author: ");
+                    author = scanner.nextLine();
+                    if(author.isEmpty()){
+                        System.out.println("Error the author is empty, please try again");
+                    }
+                }while(author.isEmpty());
+                do{
+                    //ciclo finchè viene assegnato un valore valido di PUBLISHER
+                    System.out.print("enter a publisher: ");
+                    publisher = scanner.nextLine();
+                    if(publisher.isEmpty()){
+                        System.out.println("Error the publisher is empty, please try again");
+                    }
+                }while(publisher.isEmpty());
+                //richiamo il costruttore
+                books[i] = new Book(title,pagesNumber,author,publisher);
+            }catch (InvalidParameterException e){
+                System.out.println("Error in parameter" );
+            }catch (Exception e){
+                System.out.println("error: " + e.getMessage());
+            }
         }
         //definisco il file
         File cartFile = new File("./resouces/cart.txt");
