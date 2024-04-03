@@ -18,7 +18,7 @@ public class Book {
         if(publisher.isEmpty()){
             throw new IllegalArgumentException("publisher is empty");
         }
-        if(pagesNumber <= 5){
+        if(pagesNumber <= 0){
             throw new IllegalArgumentException("pagesNumber <= 0");
         }
         this.title = title;
