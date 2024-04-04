@@ -9,15 +9,17 @@ public class Tris {
         char[][] moves = new char[3][3];
         //dichiaro altre variabili
         boolean turn = false;//variabile del turno, false = giocatore A
-        boolean isOver = false;//se true indica che la partica è finita
         //stampo il campo di gioco prima di iniziare
         System.out.println(playground(moves));
         //inizio il gioco
-        while(!isOver){
+        while(!lookWinner(moves)){
             //ciclo finchè finisce il gioco
             currentMove(moves,turn,scanner);
             turn = !turn;
         }
+        //stampo il vincitore
+        //a fine partita i player vengono invertiti quindi true = A
+        System.out.println("\nPlayer " + (turn ? 'A' : 'B') + " win");
         //chiudo la risorsa scanner
         scanner.close();
     }
@@ -51,5 +53,30 @@ public class Tris {
         }while(occupied);
         //stampo il campo da gioco aggiornato
         System.out.println(playground(moves));
+    }
+    public static boolean lookWinner(char[][] moves) {
+        int i = 0;
+        while (i < moves.length) {
+            int j = 1;
+            if ((moves[i][j - 1] == moves[i][j] && moves[i][j] == moves[i][j + 1]) && moves[i][j - 1] != '\u0000') {
+                return true;
+            }
+            i++;
+        }
+        int j = 0;
+        i = 1;
+        while (j < moves[i].length) {
+            if ((moves[i - 1][j] == moves[i][j] && moves[i][j] == moves[i + 1][j]) && moves[i - 1][j] != '\u0000') {
+                return true;
+            }
+            j++;
+        }
+        if ((moves[0][0] == moves[1][1] && moves[1][1] == moves[2][2]) && moves[0][0] != '\u0000') {
+            return true;
+        }
+        if ((moves[0][2] == moves[1][1] && moves[1][1] == moves[2][0]) && moves[0][2] != '\u0000') {
+            return true;
+        }
+        return false;
     }
 }
