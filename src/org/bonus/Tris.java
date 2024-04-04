@@ -35,9 +35,20 @@ public class Tris {
         boolean occupied = false;
         do{
         //ciclo finchè l'utente inserisce un valore in una cella non occupata
+            String move = "";
             //salvo la mossa del giocatore attuale
-            System.out.print("tocca al giocatore " + (turn ? "B" : "A") + ", inserisci la posizione: " );
-            String move = scanner.nextLine();
+            do {
+                System.out.print("It's turn of player " + (turn ? "B" : "A") + ", enter the position(x-y): " );
+                move = scanner.nextLine();
+                move = move.replaceAll(" ", "");
+                if(move.length() != 3 ||
+                        (move.charAt(0) != '1' && move.charAt(0) != '2' && move.charAt(0) != '3') ||
+                        (move.charAt(2) != '1' && move.charAt(2) != '2' && move.charAt(2) != '3')
+                ){
+                    System.out.println("Error, the move in not valid, please try again");
+                    move = "";
+                }
+            }while (move == "");
             //estraggo gli indici
             int row = Character.getNumericValue(move.charAt(0)) - 1;
             int col = Character.getNumericValue(move.charAt(2)) - 1;
